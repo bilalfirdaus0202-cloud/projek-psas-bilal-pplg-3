@@ -1,0 +1,188 @@
+/* 
+ * Custom Stylesheet - Cirebon Rattan Heritage
+ * Warm Earthy Rattan Aesthetic, Modern Glassmorphism & Print Styles
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+:root {
+  --primary-wood: #B45309;      /* Warm Amber / Teak */
+  --primary-deep: #78350F;      /* Deep Mahogany / Rattan Core */
+  --primary-light: #F59E0B;     /* Golden Rattan */
+  --rattan-bg: #FDFBF7;         /* Warm Cream / Natural Bleach */
+  --rattan-card: #FFFFFF;
+  --accent-sage: #059669;       /* Ready Stock Green */
+  --accent-amber: #D97706;      /* Preorder Amber */
+  --slate-dark: #0F172A;
+  --slate-body: #334155;
+  --slate-muted: #64748B;
+  --border-warm: #E2D9CC;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--rattan-bg);
+  color: var(--slate-body);
+  scroll-behavior: smooth;
+}
+
+.font-serif-luxury {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Subtle Rattan Weave Background Pattern */
+.bg-rattan-pattern {
+  background-color: #FDFBF7;
+  background-image: radial-gradient(#d6c7b2 0.75px, transparent 0.75px), radial-gradient(#d6c7b2 0.75px, #FDFBF7 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.bg-rattan-pattern-dark {
+  background-color: #17120c;
+  background-image: radial-gradient(#2d2217 0.75px, transparent 0.75px), radial-gradient(#2d2217 0.75px, #17120c 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1ede4;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8b9a6;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9a8268;
+}
+
+/* Glassmorphism Navigation */
+.nav-glass {
+  background: rgba(253, 251, 247, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 217, 204, 0.8);
+}
+
+/* Card Glow & Hover Effects */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -10px rgba(180, 83, 9, 0.12), 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+}
+
+/* Stock Badges */
+.badge-ready-pulse {
+  position: relative;
+}
+.badge-ready-pulse::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Active Tab Underline Transition */
+.tab-active {
+  color: #B45309;
+  font-weight: 700;
+  border-color: #B45309;
+}
+
+/* Custom Checkbox and Radio styling */
+input[type="radio"]:checked + label {
+  border-color: #B45309;
+  background-color: #FEF3C7;
+  color: #78350F;
+}
+
+/* Toast Container */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast-item {
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Print Invoice Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-quotation, #printable-quotation * {
+    visibility: visible;
+  }
+  #printable-quotation {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white;
+    color: black;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
